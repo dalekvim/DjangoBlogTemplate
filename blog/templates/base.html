@@ -17,6 +17,7 @@
     </style>
 
     <title>{% block title %}{% endblock %}</title>
+    {{ form.media }}
   </head>
   <body>
     <header>
@@ -37,7 +38,7 @@
                   Dropdown
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href="{% url 'profile' %}">Profile</a>
+                  <a class="dropdown-item" href="{% url 'profile' user.id %}">Profile</a>
                   <div class="dropdown-divider"></div>
                   <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
                 </div>
@@ -45,6 +46,9 @@
             {% else %}
               <li class="nav-item">
                 <a class="nav-link" href="{% url 'login' %}">Login</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'register' %}">Register</a>
               </li>
             {% endif %}
             <!--

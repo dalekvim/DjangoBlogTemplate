@@ -1,6 +1,7 @@
 from django.db import models
 from django.db.models import Model, CharField, ForeignKey, DateTimeField, OneToOneField, DateField
 from django.contrib.auth.models import User
+from django.shortcuts import reverse
 from django.utils import timezone
 from tinymce.models import HTMLField
 
@@ -12,10 +13,14 @@ class Post(Model):
   content = HTMLField()
 
   def get_absolute_url(self):
-      return reverse("post_detail", kwargs={"pk": self.pk})
-  
+      return reverse("post", kwargs={"pk": self.pk})
+
 
 class Profile(Model):
   user = OneToOneField(User, on_delete=models.CASCADE)
-  date_of_birth = DateField()
-  bio = HTMLField()
+  date_of_birth = DateField(default=timezone.now)
+  bio = HTMLField(default="Write a bit about yourself.")
+
+  def get_absolute_url(self):
+      return reverse("profile", kwargs={"pk": self.pk})
+  

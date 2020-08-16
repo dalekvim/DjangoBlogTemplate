@@ -1,6 +1,18 @@
 {% extends 'base.html' %}
 
-{% block heading %}{% block title %}{{ title }}{% endblock %} Page{% endblock %}
+{% block heading %}{{ user }}'s {% block title %}Profile{% endblock %} Page{% endblock %}
 {% block content %}
-  <h2>{{ user.username }}</h2>
+  <div>
+    <h3 class="pb-1">Date of Birth:</h3>
+    <p>
+      The {{ user.profile.date_of_birth|date:"jS" }} of {{ user.profile.date_of_birth|date:"F Y" }}
+    </p>
+    <h3 class="pb-1">Bio:</h3>
+    {% autoescape off %}
+      {{ user.profile.bio }}
+    {% endautoescape %}
+  </div>
+  {% if request.user == user %}
+    <a class="btn btn-primary mt-3" href="{% url 'profile-update' user.profile.id %}">Update</a>
+  {% endif %}
 {% endblock %}
