@@ -2,8 +2,5 @@
 
 {% block heading %}{% block title %}{{ title }}{% endblock %} Page{% endblock %}
 {% block content %}
-  {% for post in object_list %}
-    {{ post.content }}
-    
-  {% endfor %}
+  <h2>{{ user.username }}</h2>
 {% endblock %}

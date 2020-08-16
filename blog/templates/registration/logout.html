@@ -2,8 +2,8 @@
 
 {% block heading %}{% block title %}{{ title }}{% endblock %} Page{% endblock %}
 {% block content %}
-  {% for post in object_list %}
-    {{ post.content }}
-    
-  {% endfor %}
+  <p>
+    Thanks for spending some quality time with the Web site today.
+  </p>
+  <a href="{% url 'login' %}">Log in again</a>
 {% endblock %}

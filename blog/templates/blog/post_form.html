@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block heading %}{% block title %}{{ title }}{% endblock %} Page{% endblock %}
+{% block content %}
+  <form>
+    <fieldset class="form-group">
+      {{ form|crispy }}
+    </fieldset>
+    <div class="form-group">
+      <button class="btn btn-primary">Create</button>
+    </div>
+  </form>
+{% endblock %}
