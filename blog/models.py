@@ -16,11 +16,11 @@ class Post(Model):
       return reverse("post", kwargs={"pk": self.pk})
 
 
-class Profile(Model):
-  user = OneToOneField(User, on_delete=models.CASCADE)
-  date_of_birth = DateField(default=timezone.now)
-  bio = HTMLField(default="Write a bit about yourself.")
+#class Profile(Model):
+#  user = OneToOneField(User, on_delete=models.CASCADE)
+#  date_of_birth = DateField(default=timezone.now)
+#  bio = HTMLField(default="Write a bit about yourself.")
 
-  def get_absolute_url(self):
-      return reverse("profile", kwargs={"pk": self.pk})
+#  def get_absolute_url(self):
+#      return reverse("profile", kwargs={"pk": self.pk})
   
