@@ -3,6 +3,7 @@ from django.views.generic import (
   ListView,
   DetailView,
   CreateView,
+  UpdateView,
   DeleteView,
 )
 
@@ -27,6 +28,11 @@ class CreatePost(CreateView):
   def form_valid(self, form):
     form.instance.author = self.request.user
     return super().form_valid(form)
+
+
+class UpdatePost(UpdateView):
+  model = Post
+  fields = ['title', 'content']
 
 
 class DeletePost(DeleteView):

@@ -1,18 +1,9 @@
 {% extends 'base.html' %}
-{% load crispy_forms_tags %}
 
 {% block heading %}{{ profile.user }}'s {% block title %}{{ title }}{% endblock %} Page{% endblock %}
 {% block content %}
   {% if request.user == profile.user %}
-    <form method="POST">
-      {% csrf_token %}
-      <fieldset class="form-group">
-        {{ form|crispy }}
-      </fieldset>
-      <div class="form-group">
-        <button class="btn btn-primary" type="submit">Update</button>
-      </div>
-    </form>
+    {% include 'update.html' %}
   {% else %}
     <h2 class="text-warning">You're not allowed on this page!</h2>
   {% endif %}
